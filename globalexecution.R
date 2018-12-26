@@ -1,0 +1,6 @@
+setwd("/home/paul/workspace/coursera/capstone")
+source("sampler.R")
+source("frequencer.R")
+source("aggregation.R")
+source("summarise.R")
+source("clear.R")
