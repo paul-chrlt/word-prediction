@@ -2,11 +2,13 @@ setwd("/home/paul/workspace/coursera/capstone")
 summarisedfolder <- "./summarisedbyletter/"
 lightfolder <- "./lightletters/"
 library(quanteda)
+library(stringr)
 
 phrase <- readline("phrase ?")
 
 sanitizer <- function(sourcetext){
     sourcetext <- tokens_tolower(tokens(sourcetext,remove_numbers=TRUE,remove_punct=TRUE,remove_symbols=TRUE,remove_separators=TRUE,remove_twitter=TRUE,remove_url=TRUE))
+    sourcetext <- paste0(sourcetext,collapse = "_")
     sourcetext
 }
 
@@ -17,15 +19,13 @@ lastone <- paste(lastone,sep = "_")
 
 searchinsummary <- function(){
     phrase <- readline("phrase ?")
-    sanitizer(phrase)
+    phrase <- sanitizer(phrase)
+    firstletter <- str_trunc(phrase,1,ellipsis = "")
+    load(paste0(lightfolder,firstletter))
+    frequences <- frequences[order(frequences$count,decreasing = TRUE),]
+    pattern <- paste0("^",phrase,"_")
+    results <- grep(pattern,frequences$words)
+    head(frequences[results,],10)
 }
 
-load(paste0(lightfolder,"a"))
-
-frequences <- frequences[order(frequences$count,decreasing = TRUE),]
-
-pattern <- "^and_i'd_"
-
-
-results <- grep(pattern,frequences$words)
-head(frequences[results,],60)
+searchinsummary()
