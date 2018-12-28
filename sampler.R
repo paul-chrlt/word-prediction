@@ -1,6 +1,6 @@
 ##Base variables
 
-setwd("/home/paul/workspace/coursera/capstone")
+# setwd("/home/paul/workspace/coursera/capstone")
 sources <- "./source/Coursera-SwiftKey/final"
 englishblogs <- paste0(sources,"/en_US/en_US.blogs.txt")
 englishtwitter <- paste0(sources,"/en_US/en_US.twitter.txt")

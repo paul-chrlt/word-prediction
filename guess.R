@@ -1,4 +1,4 @@
-setwd("/home/paul/workspace/coursera/capstone")
+# setwd("/home/paul/workspace/coursera/capstone")
 summarisedfolder <- "./summarisedbyletter/"
 lightfolder <- "./lightletters/"
 library(quanteda)

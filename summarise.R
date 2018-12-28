@@ -1,4 +1,4 @@
-setwd("/home/paul/workspace/coursera/capstone")
+# setwd("/home/paul/workspace/coursera/capstone")
 letteraggregatedfolder <- "./aggregatedbyletter/"
 letterfiles <- paste0(letteraggregatedfolder, list.files(letteraggregatedfolder))
 exportfolder <- "./summarisedbyletter/"

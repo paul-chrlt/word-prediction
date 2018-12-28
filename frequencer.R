@@ -1,4 +1,4 @@
-setwd("/home/paul/workspace/coursera/capstone")
+# setwd("/home/paul/workspace/coursera/capstone")
 sourcefolder <- "./sample/"
 sourcefiles <- paste0(sourcefolder, list.files(sourcefolder))
 letterfrequencesfolder <- "./frequencesbyletter/"

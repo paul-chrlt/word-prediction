@@ -1,4 +1,4 @@
-setwd("/home/paul/workspace/coursera/capstone")
+# setwd("/home/paul/workspace/coursera/capstone")
 source("sampler.R")
 source("frequencer.R")
 source("aggregation.R")
