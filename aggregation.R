@@ -1,7 +1,8 @@
 # setwd("/home/paul/workspace/coursera/capstone")
-# frequencesfolder <- "./frequences/"
-letterfrequencesfolder <- "./frequencesbyletter/"
-letteraggregatedfolder <- "./aggregatedbyletter/"
+letterfrequencesfolder <- "./frequencesfbyletter/"
+# letterfrequencesfolder <- "./frequencesbyletter/"
+letteraggregatedfolder <- "./aggregatedfbyletter/"
+# letteraggregatedfolder <- "./aggregatedbyletter/"
 
 frequencesfiles <- paste0(letterfrequencesfolder, list.files(letterfrequencesfolder))
 

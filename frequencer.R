@@ -1,7 +1,8 @@
 # setwd("/home/paul/workspace/coursera/capstone")
 sourcefolder <- "./sample/"
 sourcefiles <- paste0(sourcefolder, list.files(sourcefolder))
-letterfrequencesfolder <- "./frequencesbyletter/"
+# letterfrequencesfolder <- "./frequencesbyletter/"
+letterfrequencesfolder <- "./frequencesfbyletter/"
 
 library(quanteda)
 library(data.table)
@@ -27,8 +28,8 @@ frequencies <- function(sourcefiles) {
         print(paste(i," ngrammed"))
         documentfeature <- dfm(ngrams, remove = stopwords())
         print(paste(i," is a dfm"))
-        documentfeature <- dfm_tfidf(documentfeature)
-        frequences <- docfreq(documentfeature)
+        documentfeature <- dfm_tfidf(documentfeature,scheme_tf = "prop")
+        frequences <- docfreq(documentfeature,scheme="inverse")
         frequences <- data.table(words=names(frequences),count=frequences)
         print(paste(i," frequenced"))
         splitbyletter(frequences,i)

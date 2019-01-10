@@ -10,6 +10,12 @@ sanitizer <- function(sourcetext){
     paste0(lasttwo,collapse = "_")
 }
 
+readableresult <- function(table,number = 1){
+    words <- head(table$words,number)
+    words <- str_extract(words,"_[a-z]*$")
+    paste0(gsub("_","",words),collapse = ", ")
+}
+
 searchinsummary <- function(phrase,locationfolder=lightfolder){
     phrase <- sanitizer(phrase)
     firstletter <- str_trunc(phrase,1,ellipsis = "")
@@ -17,8 +23,7 @@ searchinsummary <- function(phrase,locationfolder=lightfolder){
     frequences <- frequences[order(frequences$count,decreasing = TRUE),]
     pattern <- paste0("^",phrase,"_")
     results <- grep(pattern,frequences$words)
-    head(frequences[results,],10)
+    frequences[results,]
+#    head(frequences[results,],10)
+    readableresult(frequences[results,],3)
 }
-
-#phrase <- readline("phrase ?")
-print("guess is loaded")

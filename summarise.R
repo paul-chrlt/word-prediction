@@ -1,7 +1,9 @@
 # setwd("/home/paul/workspace/coursera/capstone")
-letteraggregatedfolder <- "./aggregatedbyletter/"
+# letteraggregatedfolder <- "./aggregatedbyletter/"
+letteraggregatedfolder <- "./aggregatedfbyletter/"
 letterfiles <- paste0(letteraggregatedfolder, list.files(letteraggregatedfolder))
-exportfolder <- "./summarisedbyletter/"
+# exportfolder <- "./summarisedbyletter/"
+exportfolder <- "./summarisedfbyletter/"
 
 library(data.table)
 library(dplyr)
@@ -12,7 +14,7 @@ summarisation <- function(file,exportfilename){
     print(paste(exportfilename,"- file loaded"))
     totalfrequences <- totalfrequences %>%
         group_by(words) %>%
-        summarise_all(funs(sum(count,na.rm=TRUE)))
+        summarise_all(funs(mean(count,na.rm=TRUE)))
     print(paste(exportfilename,"- file summarised"))
     totalpathname <- paste0(exportfolder,exportfilename)
     save(totalfrequences,file=totalpathname)
