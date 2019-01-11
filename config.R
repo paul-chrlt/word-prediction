@@ -7,7 +7,7 @@ englishnews <- paste0(sources,"/en_US/en_US.news.txt")
 ## sources will be truncated for memory performance, samplesize is the number of lines per sample
 samplesize <- 50000
 
-## folder structure, some are comment to keep multiple trials
+## folder structure, some are comments to keep multiple trials
 
 sourcefolder <- "./sample/"
 
