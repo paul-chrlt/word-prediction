@@ -1,4 +1,5 @@
 library(shiny)
+library(here)
 source("../../guess.R")
 lightfolder <- "../../lightletters/"
 shinyServer(function(input, output) {

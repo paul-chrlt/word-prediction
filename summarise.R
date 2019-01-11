@@ -1,6 +1,6 @@
 ## config import
-
-source(config.R)
+library(here)
+source(paste0(here(),"/config.R"))
 
 letterfiles <- paste0(letteraggregatedfolder, list.files(letteraggregatedfolder))
 

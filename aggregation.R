@@ -1,6 +1,6 @@
 ## config import
-
-source(config.R)
+library(here)
+source(paste0(here(),"/config.R"))
 
 frequencesfiles <- paste0(letterfrequencesfolder, list.files(letterfrequencesfolder))
 

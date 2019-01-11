@@ -1,6 +1,6 @@
-##Base variables
-
-source(config.R)
+## config import
+library(here)
+source(paste0(here(),"/config.R"))
 
 ##Getting the lines
 
