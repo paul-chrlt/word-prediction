@@ -1,8 +1,13 @@
-# setwd("/home/paul/workspace/coursera/capstone")
-# lightfolder <- "./lightletters/"
-lightfolder <- "./lightfletters/"
+## config import
+
+source(config.R)
+
+## libraries
+
 library(quanteda)
 library(stringr)
+
+## function definition
 
 sanitizer <- function(sourcetext){
     sourcetext <- tokens_tolower(tokens(sourcetext,remove_numbers=TRUE,remove_punct=TRUE,remove_symbols=TRUE,remove_separators=TRUE,remove_twitter=TRUE,remove_url=TRUE))
