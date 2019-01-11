@@ -1,5 +1,5 @@
 # setwd("/home/paul/workspace/coursera/capstone")
-# summarisedfolder <- "./summarisedbyletter/"
+# lightfolder <- "./lightletters/"
 lightfolder <- "./lightfletters/"
 library(quanteda)
 library(stringr)

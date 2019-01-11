@@ -1,11 +1,6 @@
 ##Base variables
 
-# setwd("/home/paul/workspace/coursera/capstone")
-sources <- "./source/Coursera-SwiftKey/final"
-englishblogs <- paste0(sources,"/en_US/en_US.blogs.txt")
-englishtwitter <- paste0(sources,"/en_US/en_US.twitter.txt")
-englishnews <- paste0(sources,"/en_US/en_US.news.txt")
-samplesize <- 50000
+source(config.R)
 
 ##Getting the lines
 

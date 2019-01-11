@@ -1,13 +1,16 @@
-# setwd("/home/paul/workspace/coursera/capstone")
-# letteraggregatedfolder <- "./aggregatedbyletter/"
-letteraggregatedfolder <- "./aggregatedfbyletter/"
+## config import
+
+source(config.R)
+
 letterfiles <- paste0(letteraggregatedfolder, list.files(letteraggregatedfolder))
-# exportfolder <- "./summarisedbyletter/"
-exportfolder <- "./summarisedfbyletter/"
+
+## libraries
 
 library(data.table)
 library(dplyr)
 library(magrittr)
+
+## functions definition
 
 summarisation <- function(file,exportfilename){
     load(file)
@@ -16,7 +19,7 @@ summarisation <- function(file,exportfilename){
         group_by(words) %>%
         summarise_all(funs(mean(count,na.rm=TRUE)))
     print(paste(exportfilename,"- file summarised"))
-    totalpathname <- paste0(exportfolder,exportfilename)
+    totalpathname <- paste0(summarisedfolder,exportfilename)
     save(totalfrequences,file=totalpathname)
     print(paste(exportfilename,"- file saved"))
 }
@@ -28,5 +31,7 @@ lettercaller <- function(){
         print(paste("letter",letters[i],"summarised"))
     }
 }
+
+## function call
 
 lettercaller()

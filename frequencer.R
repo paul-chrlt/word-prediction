@@ -1,12 +1,11 @@
-# setwd("/home/paul/workspace/coursera/capstone")
-sourcefolder <- "./sample/"
-sourcefiles <- paste0(sourcefolder, list.files(sourcefolder))
-# letterfrequencesfolder <- "./frequencesbyletter/"
-letterfrequencesfolder <- "./frequencesfbyletter/"
+## config import
+source(config.R)
 
+##libraries
 library(quanteda)
 library(data.table)
 
+##functions definition
 splitbyletter <- function(frequencesdt,samplenumber){
     for (i in 1:26){
         pattern <- paste0("^",letters[i])
@@ -36,4 +35,5 @@ frequencies <- function(sourcefiles) {
     }
 }
 
+## function call
 frequencies(sourcefiles)

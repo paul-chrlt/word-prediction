@@ -1,14 +1,15 @@
-# setwd("/home/paul/workspace/coursera/capstone")
-letterfrequencesfolder <- "./frequencesfbyletter/"
-# letterfrequencesfolder <- "./frequencesbyletter/"
-letteraggregatedfolder <- "./aggregatedfbyletter/"
-# letteraggregatedfolder <- "./aggregatedbyletter/"
+## config import
+
+source(config.R)
 
 frequencesfiles <- paste0(letterfrequencesfolder, list.files(letterfrequencesfolder))
 
+## libraries
 
 library(data.table)
-#library(dplyr)
+
+## function definition
+
 aggregator <- function(frequencesfiles,filename){
     totalfrequences <- data.table(words=character(),count=integer())
     for (i in 1:length(frequencesfiles)){
@@ -31,8 +32,6 @@ lettercaller <- function(){
     }
 }
 
-lettercaller()
+## function call
 
-#totalfrequences %>%
-#    group_by(words) %>%
-#    summarise_all(funs(sum(count,na.rm=TRUE)))
+lettercaller()
