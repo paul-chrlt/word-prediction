@@ -3,7 +3,7 @@
 summarisedfolder <- "./summarisedfbyletter/"
 # exportfolder <- "./lightletters/"
 exportfolder <- "./lightfletters/"
-mincount <- 5.117689
+keeped <- .2
 letterfiles <- paste0(summarisedfolder, list.files(summarisedfolder))
 
 library(data.table)
@@ -11,7 +11,8 @@ library(data.table)
 clearer <- function(file,exportname){
     load(file)
     print(paste(exportname,"- file loaded"))
-    deleted <- sum(totalfrequences$count<=mincount)/length(totalfrequences$count)
+    deleted <- 1-keeped
+    mincount <- quantile(totalfrequences$count,1-keeped)
     frequences <- totalfrequences[totalfrequences$count>mincount,]
     print(paste(exportname,"-",deleted*100,"% data cleared"))
     save(frequences,file = paste0(exportfolder,exportname))
