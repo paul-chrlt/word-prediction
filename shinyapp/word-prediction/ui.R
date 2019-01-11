@@ -3,15 +3,20 @@ library(shiny)
 shinyUI(fluidPage(
     titlePanel("word prediction"),
     
-    sidebarLayout(
-        sidebarPanel(
+    fluidRow(
+        column(1),
+        column(10,
             textInput("phrase","Phrase",width='100%'),
             submitButton(text="Guess the next word")
         ),
-        
-        mainPanel(
-            tableOutput("suggestions")
-            #       plotOutput("distPlot")
-        )
+        column(1)
+        ),
+    fluidRow(
+        column(1),
+        column(10,
+            textOutput("suggestions")
+        ),
+        column(1)
     )
-))
+    )
+)

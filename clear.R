@@ -1,7 +1,9 @@
 # setwd("/home/paul/workspace/coursera/capstone")
-summarisedfolder <- "./summarisedbyletter/"
-exportfolder <- "./lightletters/"
-mincount <- 1
+# summarisedfolder <- "./summarisedbyletter/"
+summarisedfolder <- "./summarisedfbyletter/"
+# exportfolder <- "./lightletters/"
+exportfolder <- "./lightfletters/"
+mincount <- 5.117689
 letterfiles <- paste0(summarisedfolder, list.files(summarisedfolder))
 
 library(data.table)
