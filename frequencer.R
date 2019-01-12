@@ -1,6 +1,7 @@
 ## config import
-library(here)
-source(paste0(here(),"/config.R"))
+library(rstudioapi)
+source(paste0(dirname(rstudioapi::getSourceEditorContext()$path),"/config.R"))
+sourcefiles <- paste0(sourcefolder, list.files(sourcefolder))
 
 ##libraries
 library(quanteda)
@@ -24,9 +25,9 @@ frequencies <- function(sourcefiles) {
         corpus <- corpus(sample)
         print(paste(i," in corpus"))
         corpus <- corpus_reshape(corpus,to="sentences",remove_numbers=TRUE,remove_punct=TRUE,remove_symbols=TRUE,remove_separators=TRUE,remove_twitter=TRUE,remove_url=TRUE)
-        ngrams <- tokens(corpus, ngrams = 1:3,remove_numbers=TRUE,remove_punct=TRUE,remove_symbols=TRUE,remove_separators=TRUE,remove_twitter=TRUE,remove_url=TRUE)
+        ngrams <- tokens(corpus, what = "word",ngrams = 1:3,remove_numbers=TRUE,remove_punct=TRUE,remove_symbols=TRUE,remove_separators=TRUE,remove_twitter=TRUE,remove_url=TRUE) # added what = word
         print(paste(i," ngrammed"))
-        documentfeature <- dfm(ngrams, remove = stopwords())
+        documentfeature <- dfm(ngrams, remove = stopwords(source = "smart")) # smart source contains more stopwords
         print(paste(i," is a dfm"))
         documentfeature <- dfm_tfidf(documentfeature,scheme_tf = "prop")
         frequences <- docfreq(documentfeature,scheme="inverse")

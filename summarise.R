@@ -1,6 +1,6 @@
 ## config import
-library(here)
-source(paste0(here(),"/config.R"))
+library(rstudioapi)
+source(paste0(dirname(rstudioapi::getSourceEditorContext()$path),"/config.R"))
 
 letterfiles <- paste0(letteraggregatedfolder, list.files(letteraggregatedfolder))
 

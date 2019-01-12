@@ -1,6 +1,7 @@
 ## config import
-library(here)
-source(paste0(here(),"/config.R"))
+library(rstudioapi)
+source(paste0(dirname(rstudioapi::getSourceEditorContext()$path),"/config.R"))
+sourcefiles <- paste0(sourcefolder, list.files(sourcefolder))
 
 ## libraries
 

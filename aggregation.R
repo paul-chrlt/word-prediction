@@ -1,6 +1,6 @@
 ## config import
-library(here)
-source(paste0(here(),"/config.R"))
+library(rstudioapi)
+source(paste0(dirname(rstudioapi::getSourceEditorContext()$path),"/config.R"))
 
 frequencesfiles <- paste0(letterfrequencesfolder, list.files(letterfrequencesfolder))
 
