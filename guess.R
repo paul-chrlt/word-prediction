@@ -22,7 +22,7 @@ readableresult <- function(table,number = 1){
     paste0(gsub("_","",words),collapse = ", ")
 }
 
-searchinsummary <- function(phrase,locationfolder=lightfolder){
+searchinsummary <- function(phrase,locationfolder=lightfolder,nbresults = 3){
     phrase <- sanitizer(phrase)
     firstletter <- str_trunc(phrase,1,ellipsis = "")
     load(paste0(locationfolder,firstletter))
@@ -31,5 +31,5 @@ searchinsummary <- function(phrase,locationfolder=lightfolder){
     results <- grep(pattern,frequences$words)
     frequences[results,]
 #    head(frequences[results,],10)
-    readableresult(frequences[results,],3)
+    readableresult(frequences[results,],nbresults)
 }
