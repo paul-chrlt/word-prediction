@@ -59,17 +59,20 @@ linetestcaller <- function(file,lightfolder,testsize,targetresults=3){
     totalresults
 }
 
+oneresult <- linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,1)
+fourresults <- linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,4)
+sixresults <- linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,6)
 tenresults <- linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,10)
-fiveresults <- linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,5)
-threeresults <- linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,3)
-fresults <- linetestcaller("./testsources/englishsentences.csv","./lightfletters/",testsize,10)
 
-## 35/100 with ten results
-## 27/100 with five results
+# fresults <- linetestcaller("./testsources/englishsentences.csv","./lightfletters/",testsize,10)
+
 ## 23/100 with three results
-## 14/100 with ten results and f sources
+## 27/100 with five results
+## 35/100 with ten results
 ## 44/100 with tenresults | fsources
 
-## combined 5
-combinedfive <- sum(linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,5)|linetestcaller("./testsources/englishsentences.csv","./lightfletters/",testsize,5))
-## 30/100
+## combined
+combinedtwo <- sum(linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,1)|linetestcaller("./testsources/englishsentences.csv","./lightfletters/",testsize,1))
+combinedfour <- sum(linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,2)|linetestcaller("./testsources/englishsentences.csv","./lightfletters/",testsize,2))
+combinedsix <- sum(linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,3)|linetestcaller("./testsources/englishsentences.csv","./lightfletters/",testsize,3))
+combinedten <- sum(linetestcaller("./testsources/englishsentences.csv","./lightletters/",testsize,5)|linetestcaller("./testsources/englishsentences.csv","./lightfletters/",testsize,5))
