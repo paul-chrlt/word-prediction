@@ -1,0 +1,100 @@
+Word Prediction App
+========================================================
+author: Paul Charlet
+date: 13/01/2019
+autosize: false
+width: 1440
+height: 1200
+
+Based on learning from millions of english texts, that app can predict the next word of a sentence.
+
+![screenshot](./presentation-assets/word-prediction-app-screenshot.png)
+
+How does it work ?
+========================================================
+
+## Chapter 1 : building the model
+
+- step 1 : retrieving english text sources from Twitter, news and blogs
+- step 2 : cleaning and splitting those texts in sentences, and then in multiple groups of words (called ngrams)
+- step 3 : giving points to group of words based on absolute frequency and frequency relative to sentences
+
+## Chapter 2 : performance optimisation
+
+- step 4 : keeping only the most useful group of words based on those scores
+- step 5 : splitting the model database (one database for each first ngram letter) in order to compute prediction on lighter data
+*******
+## Chapter 3 : prediction
+
+- step 6 : based on last words of user input, calling the appropriate data base
+- step 7 : ordering the results and keeping those with the best score
+
+Prediction accuracy and performance
+========================================================
+
+The script called validator.R takes as input a csv file and computes prediction using the model.
+The model can give a determined number of possible predictions. The validation tests if the good result is one of the possible predictions  
+The accuracy gives the number of times (for 100 tries) the last word of the input can be found in a prediction
+
+With a frequency counting algorithm :
+
+| number of predictions given by the model | accuracy |
+| --- | --- | 
+|1|18|
+|4|24|
+|6|28|
+|10|33|
+*****
+We can combine the frequency count with an TFIDF algorithm which gives results with more meaning, but gives less words like pronouns or "stop words". Those two algorithms complete each other well. The results are slightly the same in accuracy, but with other propositions. The accuracy is now :
+
+| number of predictions given by the model | accuracy |
+| --- | --- | 
+|2|19|
+|4|24|
+|6|26|
+|10|30|
+
+However, there is a performance loss on computation times : 2x more database requests.
+
+Production ready 
+========================================================
+
+## Back-end
+
+The learning part of this app is ready for production and continuous improvement. Each part is independant and in different file, with configuration allowing learning performance optimisation (especially for RAM management).
+
+- config.R : defines folder structure and variables numbers (samples size, quantile definition for database lightening, size of testing)
+- multiple exports : between each step, data objects are exported in different folders, allowing multiple testing and less loss if something goes wrong
+- splitted scripts structure can be seen here (note that text sources and intermediary computation results are not commited) : https://github.com/paul-chrlt/word-prediction
+
+*****
+
+## Front-end
+
+The front-end part is also improvement-capable : most of this part is based on the data model.
+
+- final database can be a remote folder
+- prediction is an independant script, allowing continuous improvement. Other models could easily be combined.
+
+What is next ? 
+========================================================
+
+## Using our model in production and retrieving actual users data
+
+- text input might be slightly different than news and blogs readings
+- computational speed target needs to be determined by usage
+
+*****
+
+## Identified optimisations :
+
+- nicer interface
+- using native code and SQL requests for performance
+- adding an LSA based algorithm, to add lexical network sense
+- context based model : learning sources could produce different predictions when using twitter, messages or professional emails
+- grammar learning : some english text sources contains already identified grammar objects. It might be useful to score the prediction based on grammar objects and grammar rules
+- cloud-computing : some learning operations took a few hours on an intel i5 with 8Gb of RAM. Some amazon instances could have done the job quickly and independantly for less than 10$
+  
+... And testing it yourself ! Thank you for your attention  
+
+--> https://paul-chrlt.shinyapps.io/word-prediction-shiny-app/
